@@ -1,0 +1,37 @@
+!Xft.dpi:96
+!fontforge.FontView.FontFamily:wenquanyi bitmap song
+Rxvt.depth:32
+Rxvt.background:[90]#1c1b29
+Rxvt.geometry:192×144
+!Rxvt.background:#2e2e2e
+Rxvt.foreground:antiquewhite
+Rxvt.colorBD:yellow
+Rxvt.colorUL:green
+Rxvt.multichar_encoding:utf-8
+Rxvt.scrollBar:Fault
+Rxvt.scrollBar_right:True
+Rxvt.scrollBar_floating: True
+Rxvt.scrollstyle: next
+Rxvt.saveLines:10000
+Rxvt.color0:black
+Rxvt.color1:red3
+Rxvt.color2:springgreen
+Rxvt.color3:wheat3
+Rxvt.color4:navy
+Rxvt.color5:magenta4
+Rxvt.color6:steelblue1
+Rxvt.color7:gray85
+Rxvt.color8:gray10
+Rxvt.color9:SkyBlue3
+Rxvt.color10:chartreuse3
+Rxvt.color11:lightgoldenrod2
+Rxvt.color12:SkyBlue1
+Rxvt.color13:pink1
+Rxvt.color14:lightblue1
+Rxvt.color15:#dbeff9
+!Rxvt.font:xft:Consolas Vera Sans YuanTi Mono :size=10,xft:Monospace:size=10
+URxvt.font: xft:Consolas:size=11,Microsoft Yahei:size=11
+URxvt*iconFile: /home/chou/.icons/Faenza/apps/scalable/terminal.svg
+Rxvt.menu:/etc/X11/rxvt.menu
+Rxvt.preeditType:Root
+Rxvt.transparency:255
