@@ -23,7 +23,7 @@ Bundle 'alswl/html5.vim'
 "Bundle 'xml.vim'
 "Bundle 'less'
 "Bundle 'hallison/vim-markdown'
-Bundle 'tpope/vim-markdown'
+"Bundle 'tpope/vim-markdown'
 "Bundle 'wikipedia.vim'
 "Bundle 'derekwyatt/vim-scala'
 "Bundle 'alswl/play2vim'
@@ -52,6 +52,7 @@ Bundle 'DoxygenToolkit.vim'
 Bundle 'taglist.vim'
 Bundle 'css_color.vim'
 Bundle 'snipMate'
+"Bundle 'vimwiki'
 "Bundle 'AutoClose--Alves'
 "Bundle 'auto_mkdir'
 "Bundle 'cecutil'
@@ -83,6 +84,9 @@ Bundle 'snipMate'
 "Bundle 'xmledit'
 
 " original repos on github
+Bundle 'vexxor/phpdoc.vim'
+"Bundle 'plasticboy/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
 "Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -95,9 +99,13 @@ Bundle 'snipMate'
 " => Gvim代码高亮设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                " 打开语法高亮
-syntax on                    " 开启文件类型侦测
 syntax sync fromstart        " 防止代码过长时的代码泛白问题
-colorscheme lucius           " 适合Ruby开发的蓝色主题
+if has('gui_running')        " Gui 环境使用 lucius
+    colorscheme lucius
+else 
+    colorscheme solarized    " 终端下使用 solarized
+endif
+set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 字体及编码设置
@@ -108,8 +116,12 @@ set encoding=utf-8
 set guifont=Monaco\ 10      " 适合Ruby开发的字体 && 字号
 "set guifont=Consolas:h10.5:cANSI
 set guifontwide=Microsoft\YaHei:h10
-set helplang=cn
-language messages zh_CN.utf-8
+"set helplang=cn
+"language messages zh_CN.utf-8
+"set langmenu=en_US
+"let $LANG = 'en_US'
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 代码缩紧相关设置
@@ -130,7 +142,7 @@ set ai!                      " 设置自动缩进
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gvim 其他设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-behave mswin                 " 启用右键菜单
+"behave mswin                 " 启用右键菜单
 set autochdir                " 自动cd到当前目录 使用NERDTree时非常方便
 set nu!                      " 显示行号
 set mouse=a                  " 启用鼠标
@@ -146,6 +158,8 @@ set list                     " 显示Tab符，使用一高亮竖线代替
 set listchars=tab:\|\ ,
 filetype plugin on           " 启用自动补全
 "filetype indent on          " 在ubuntu下启用该选项，PHP注释出错
+set noerrorbells visualbell t_vb=        "关闭beep和flash
+autocmd GUIEnter * set visualbell t_vb=  "关闭beep和flash
 autocmd FileType ruby set tabstop=8|set shiftwidth=2|set expandtab    " 打开ruby时使用2个空格为缩进
 " 用空格键来开关折叠
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
@@ -155,6 +169,14 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F10> :NERDTreeToggle
 let NERDTreeChDirMode=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Flavored-markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin taglist configuration
@@ -191,8 +213,33 @@ map <F11> :TlistToggle
 let g:DoxygenToolkit_authorName="JonChou <ilorn.mc@gmail.com>"
 let g:DoxygenToolkit_briefTag_funcName="no"
 let g:doxygen_enhanced_color=1
-" DoxAuthor Dox DoxBlock¿?¿?¿?¿?¿?¿?¿?¿?¿?
+" DoxAuthor Dox DoxBlock
 map <F3>a : DoxAuthor
 map <F3>f : Dox
 map <F3>b : DoxBlock
 map <F3>c O/** */
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin php-doc configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+nnoremap <C-P> :call PhpDocSingle()<CR> 
+vnoremap <C-P> :call PhpDocRange()<CR> 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin vimwiki configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+    \ 'path_html': '~/vimwiki/html/',
+    \ 'template_path': '~/vimwiki/template/',
+    \ 'template_default': 'template',
+    \ 'template_ext': '.html',
+    \ 'auto_export': 1}]
+
+let g:vimwiki_camel_case = 0
+let g:vimwiki_auto_checkbox = 0          "列表不自动添加checkbox
+nmap <F5> :Vimwiki2HTML<CR>
+nmap <F6> :VimwikiAll2HTML<CR>
+
+
+set tags+=~/Documents/php-src-PHP-5.3/tags
