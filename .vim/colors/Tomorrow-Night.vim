@@ -300,10 +300,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("cRepeat", s:purple, "", "")
 
 	" PHP Highlighting
-	call <SID>X("phpVarSelector", s:red, "", "")
+	call <SID>X("phpVarSelector", s:purple, "", "")
 	call <SID>X("phpKeyword", s:purple, "", "")
 	call <SID>X("phpRepeat", s:purple, "", "")
-	call <SID>X("phpConditional", s:purple, "", "")
+	call <SID>X("phpConditional", s:green, "", "")
 	call <SID>X("phpStatement", s:purple, "", "")
 	call <SID>X("phpMemberSelector", s:foreground, "", "")
 

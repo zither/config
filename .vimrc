@@ -11,6 +11,8 @@ call vundle#rc()
 " vim-scripts repos
 
 Bundle 'gmarik/vundle'
+"Bundle 'Limp'
+"Bundle 'slimv.vim'
 
 " Syntax
 "Bundle 'asciidoc.vim'
@@ -50,7 +52,7 @@ Bundle 'alswl/html5.vim'
 Bundle 'The-NERD-tree'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'taglist.vim'
-Bundle 'css_color.vim'
+"Bundle 'css_color.vim'
 Bundle 'snipMate'
 "Bundle 'vimwiki'
 "Bundle 'AutoClose--Alves'
@@ -82,15 +84,20 @@ Bundle 'snipMate'
 "Bundle 'SQLUtilities'
 "Bundle 'matchit.zip'
 "Bundle 'xmledit'
+Bundle 'SyntaxAttr.vim'
 
 " original repos on github
-Bundle 'vexxor/phpdoc.vim'
+Bundle 'ap/vim-css-color'
+Bundle 'tobyS/vmustache'
+Bundle 'tobyS/pdv'
+Bundle 'SirVer/ultisnips'
+"Bundle 'vexxor/phpdoc.vim'
 "Bundle 'plasticboy/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
 "Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
+"Bundle 'Valloric/YouCompleteMe'
 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
@@ -98,14 +105,16 @@ Bundle 'jtratner/vim-flavored-markdown'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gvim代码高亮设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set t_Co=256                 " 设置为256色
 syntax enable                " 打开语法高亮
 syntax sync fromstart        " 防止代码过长时的代码泛白问题
 if has('gui_running')        " Gui 环境使用 lucius
     colorscheme lucius
 else 
-    colorscheme solarized    " 终端下使用 solarized
+    "colorscheme solarized    " 终端下使用 solarized
+    colorscheme Tomorrow-Night    " 终端下使用 solarized
 endif
-set background=dark
+"set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 字体及编码设置
@@ -158,6 +167,7 @@ set list                     " 显示Tab符，使用一高亮竖线代替
 set listchars=tab:\|\ ,
 filetype plugin on           " 启用自动补全
 "filetype indent on          " 在ubuntu下启用该选项，PHP注释出错
+
 set noerrorbells visualbell t_vb=        "关闭beep和flash
 autocmd GUIEnter * set visualbell t_vb=  "关闭beep和flash
 autocmd FileType ruby set tabstop=8|set shiftwidth=2|set expandtab    " 打开ruby时使用2个空格为缩进
@@ -222,9 +232,9 @@ map <F3>c O/** */
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin php-doc configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <C-P> :call PhpDocSingle()<CR> 
-vnoremap <C-P> :call PhpDocRange()<CR> 
+"inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+"nnoremap <C-P> :call PhpDocSingle()<CR> 
+"vnoremap <C-P> :call PhpDocRange()<CR> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin vimwiki configuration
@@ -241,5 +251,24 @@ let g:vimwiki_auto_checkbox = 0          "列表不自动添加checkbox
 nmap <F5> :Vimwiki2HTML<CR>
 nmap <F6> :VimwikiAll2HTML<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ctags configuration for php-src
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set tags+=~/Documents/php-src-PHP-5.3/tags
 
-set tags+=~/Documents/php-src-PHP-5.3/tags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim 80 characters line
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let &colorcolumn=81
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Pdv
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <C-p> :call pdv#DocumentWithSnip()<CR>
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

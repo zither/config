@@ -34,6 +34,8 @@ hi Normal           ctermfg=254             ctermbg=235
 " any comment
 hi Comment          guifg=#808080                                   gui=none
 hi Comment          ctermfg=243                                     cterm=none
+hi phpDocTags       guifg=#808080                                   gui=none
+hi phpDocCustomTags guifg=#808080                                   gui=none
 
 
 " Constant Group
