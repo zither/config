@@ -1,108 +1,60 @@
-"""""""""""""""""""""""""""""""""""""""
-"Vundle
-"""""""""""""""""""""""""""""""""""""""
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" My Bundles here:
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" vim-scripts repos
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'gmarik/vundle'
-"Bundle 'Limp'
-"Bundle 'slimv.vim'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+"Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" Syntax
-"Bundle 'asciidoc.vim'
-"Bundle 'confluencewiki.vim'
-Bundle 'alswl/html5.vim'
-"Bundle 'JavaScript-syntax'
-"Bundle 'mako.vim'
-"Bundle 'moin.vim'
-"Bundle 'python.vim--Vasiliev'
-"Bundle 'xml.vim'
-"Bundle 'less'
-"Bundle 'hallison/vim-markdown'
-"Bundle 'tpope/vim-markdown'
-"Bundle 'wikipedia.vim'
-"Bundle 'derekwyatt/vim-scala'
-"Bundle 'alswl/play2vim'
-"Bundle 'tpope/vim-haml'
-"Bundle 'kchmck/vim-coffee-script'
-"Bundle 'vim-ruby/vim-ruby'
-"Bundle 'django.vim'
-"Bundle 'nginx.vim'
 
-" Color
-"Bundle 'desert256.vim'
+Plugin 'The-NERD-tree'
+Plugin 'DoxygenToolkit.vim'
+Plugin 'taglist.vim'
+Plugin 'ap/vim-css-color'
+Plugin 'tobyS/vmustache'
+Plugin 'tobyS/pdv'
+Plugin 'SirVer/ultisnips'
+Plugin 'jtratner/vim-flavored-markdown'
 
-" Ftplugin
-"Bundle 'python_fold'
-
-" Indent
-"Bundle 'indent/html.vim'
-"Bundle 'IndentAnything'
-"Bundle 'Javascript-Indentation'
-"Bundle 'mako.vim--Torborg'
-"Bundle 'gg/python.vim'
-
-" Plugin
-Bundle 'The-NERD-tree'
-Bundle 'DoxygenToolkit.vim'
-Bundle 'taglist.vim'
-"Bundle 'css_color.vim'
-Bundle 'snipMate'
-"Bundle 'vimwiki'
-"Bundle 'AutoClose--Alves'
-"Bundle 'auto_mkdir'
-"Bundle 'cecutil'
-"Bundle 'fcitx.vim'
-"Bundle 'FencView.vim'
-"Bundle 'FuzzyFinder'
-"Bundle 'jsbeautify'
-"Bundle 'L9'
-"Bundle 'Mark'
-"Bundle 'matrix.vim'
-"Bundle 'mru.vim'
-"Bundle 'The-NERD-Commenter'
-"Bundle 'restart.vim'
-"Bundle 'templates.vim'
-"Bundle 'vimim.vim'
-"Bundle 'ZenCoding.vim'
-"Bundle 'hallettj/jslint.vim'
-"Bundle 'vcscommand.vim'
-"Bundle 'TaskList.vim'
-"Bundle 'pep8'
-"Bundle 'git://github.com/kevinw/pyflakes-vim.git'
-"Bundle 'sontek/rope-vim'
-"Bundle 'project.tar.gz'
-"Bundle 'minibufexplorerpp'
-"Bundle 'bufexplorer.zip'
-"Bundle 'Align.vim'
-"Bundle 'SQLUtilities'
-"Bundle 'matchit.zip'
-"Bundle 'xmledit'
-Bundle 'SyntaxAttr.vim'
-
-" original repos on github
-Bundle 'ap/vim-css-color'
-Bundle 'tobyS/vmustache'
-Bundle 'tobyS/pdv'
-Bundle 'SirVer/ultisnips'
-"Bundle 'vexxor/phpdoc.vim'
-"Bundle 'plasticboy/vim-markdown'
-Bundle 'jtratner/vim-flavored-markdown'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'Valloric/YouCompleteMe'
-
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+"
+"
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gvim代码高亮设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set t_Co=256                 " 设置为256色
@@ -119,12 +71,12 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 字体及编码设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set fileencodings=utf-8,gbk,ucs-bom,default,latin1
-set termencoding=utf-8
-set encoding=utf-8
-set guifont=Monaco\ 10      " 适合Ruby开发的字体 && 字号
+"set fileencodings=utf-8,gbk,ucs-bom,default,latin1
+"set termencoding=utf-8
+"set encoding=utf-8
+"set guifont=Monaco\ 10      " 适合Ruby开发的字体 && 字号
 "set guifont=Consolas:h10.5:cANSI
-set guifontwide=Microsoft\YaHei:h10
+"set guifontwide=Microsoft\YaHei:h10
 "set helplang=cn
 "language messages zh_CN.utf-8
 "set langmenu=en_US
@@ -179,6 +131,7 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F10> :NERDTreeToggle
 let NERDTreeChDirMode=2
+autocmd BufEnter * lcd %:p:h
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Flavored-markdown
@@ -236,20 +189,6 @@ map <F3>c O/** */
 "nnoremap <C-P> :call PhpDocSingle()<CR> 
 "vnoremap <C-P> :call PhpDocRange()<CR> 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin vimwiki configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-    \ 'path_html': '~/vimwiki/html/',
-    \ 'template_path': '~/vimwiki/template/',
-    \ 'template_default': 'template',
-    \ 'template_ext': '.html',
-    \ 'auto_export': 1}]
-
-let g:vimwiki_camel_case = 0
-let g:vimwiki_auto_checkbox = 0          "列表不自动添加checkbox
-nmap <F5> :Vimwiki2HTML<CR>
-nmap <F6> :VimwikiAll2HTML<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ctags configuration for php-src
