@@ -36,6 +36,7 @@ Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
 Plugin 'SirVer/ultisnips'
 Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -125,12 +126,12 @@ autocmd GUIEnter * set visualbell t_vb=  "关闭beep和flash
 autocmd FileType ruby set tabstop=8|set shiftwidth=2|set expandtab    " 打开ruby时使用2个空格为缩进
 " 用空格键来开关折叠
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-inoremap jj <ESC>  
+inoremap jj <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin NERDTree configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F10> :NERDTreeToggle
+map <F10> :NERDTreeTabsToggle
 let NERDTreeChDirMode=2
 autocmd BufEnter * lcd %:p:h
 
