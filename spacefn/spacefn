@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#POKER_KBD="/dev/input/by-id/usb-Heng_Yu_Technology_Poker-event-kbd"
+POKER_KBD="poker.cfg"
+FIRE_KBD="fire.cfg"
+DEFAULT_KBD="default.cfg"
+
+pids=( $(pgrep -f spacefn) )
+for pid in "${pids[@]}"; do
+  if [[ $pid != $$ ]]; then
+    kill "$pid"
+  fi
+done
+
+cd /home/potted/apps/spacefn-evdev
+if [ "$1" = "poker" ]; then
+    ./spacefn $POKER_KBD  > /dev/null 2>&1 &
+    echo "Poker enabled"
+elif [ "$1" = "fire" ]; then
+    ./spacefn $FIRE_KBD  > /dev/null 2>&1 &
+    echo "Fire enabled"
+else
+    ./spacefn $DEFAULT_KBD > /dev/null 2>&1 &
+    echo "Default Keybord enabled"
+fi
